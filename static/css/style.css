@@ -312,3 +312,50 @@ h1 {
     text-align: center;
     margin: 15px 0 0 0;
 }
+
+/* --- SEKCJA 3: STYLE DLA POWITALNEGO OKNA --- */
+
+.welcome-content {
+    /* Ustawienia specyficzne dla tego okna */
+    width: 90vw; /* Szerokość na 90% szerokości ekranu */
+    max-width: 500px; /* Ale nie więcej niż 500px */
+    height: auto; /* Wysokość dopasuje się do treści */
+    text-align: center;
+    padding: 30px 40px;
+}
+
+.welcome-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.2em, 8vw, 3em); /* Dopasowujący się rozmiar czcionki */
+    color: #d83c5a;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.welcome-content p {
+    font-size: clamp(1em, 4vw, 1.1em);
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+#start-button {
+    background-color: #e91e63;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px; /* Zaokrąglone rogi */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#start-button:hover {
+    background-color: #d83c5a;
+    transform: scale(1.05);
+}
+
+/* --- KONIEC SEKCJA 3: STYLE DLA POWITALNEGO OKNA --- */
