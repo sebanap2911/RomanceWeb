@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Dni Miłości ❤️</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <h1>7 Dni Miłości</h1>
+        <p class="subtitle">Kliknij w dzień, aby odkryć niespodziankę przygotowaną specjalnie dla Ciebie!</p>
+
+        <div class="calendar-grid">
+            <div class="day-card" data-day="1" data-type="gallery" data-api="/api/photos/day1">
+                <div class="day-number">Dzień 1</div>
+            </div>
+            <div class="day-card" data-day="2" data-type="quiz"><div class="day-number">Dzień 2</div></div>
+            <div class="day-card" data-day="3" data-type="text"><div class="day-number">Dzień 3</div></div>
+            <div class="day-card" data-day="4" data-type="text"><div class="day-number">Dzień 4</div></div>
+            <div class="day-card" data-day="5" data-type="text"><div class="day-number">Dzień 5</div></div>
+            <div class="day-card" data-day="6" data-type="text"><div class="day-number">Dzień 6</div></div>
+            <div class="day-card" data-day="7" data-type="text"><div class="day-number">Dzień 7</div></div>
+        </div>
+    </div>
+
+    <div id="surprise-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+                <div id="photo-gallery" style="display: none;">
+                    <div class="gallery-image-container">
+                        <div class="gallery-arrow left-arrow">‹</div>
+                        <img id="gallery-image" src="" alt="Zdjęcie z galerii">
+                        <div class="gallery-arrow right-arrow">›</div>
+                    </div>
+                    <p id="gallery-description"></p>
+                </div>
+
+                <div id="quiz-container" style="display: none;">
+                    <h2 id="quiz-question"></h2>
+                    <div id="quiz-options-grid">
+                        </div>
+                    <p id="quiz-feedback"></p>
+                </div>
+                
+                <div id="other-surprise"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

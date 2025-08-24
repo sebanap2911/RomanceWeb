@@ -1,0 +1,314 @@
+/* Import czcionki dla romantycznego klimatu */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* --- SEKCJA 1: GŁÓWNE STYLE STRONY --- */
+
+/* Nowoczesny reset CSS, który rozwiązuje wiele problemów z rozmiarem. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Ukrywa animowane serduszka poza ekranem */
+    position: relative;
+}
+
+/* Animowane serduszka w tle */
+body::before, body::after {
+    content: '❤️';
+    position: absolute;
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.3);
+    animation: fall 15s infinite linear;
+    z-index: 0;
+}
+
+body::before {
+    left: 20%;
+    top: -50px;
+    animation-delay: 0s;
+}
+
+body::after {
+    left: 70%;
+    top: -50px;
+    font-size: 30px;
+    animation-delay: 7s;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.main-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Kontener jest nad animacją tła */
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4em;
+    color: #d83c5a;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+}
+
+.day-card {
+    background-color: #e91e63;
+    color: white;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.5em;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+}
+
+.day-card:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6);
+}
+
+/* --- SEKCJA 2: STYLE OKNA MODALNEGO (POPUP) I GALERII --- */
+
+.modal {
+    display: none; /* Ukryte domyślnie */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    width: 80vh;
+    height: 90vh;
+    max-width: 1400px;
+    padding: 2vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    z-index: 110; /* Nad wszystkim w modalu */
+}
+
+.close-button:hover {
+    color: #d83c5a;
+}
+
+/* Style galerii */
+#photo-gallery {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Układaj elementy jeden pod drugim */
+    justify-content: center; /* Centruj w pionie */
+    align-items: center;     /* Centruj w poziomie */
+    gap: 5px; /* Odstęp między obrazem a opisem */
+}
+
+.gallery-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+#gallery-image {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 8px;
+    user-select: none;
+}
+
+#gallery-description {
+    max-height: 20vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-size: clamp(14px, 1.8vh, 18px);
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    color: #333;
+}
+
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 0 15px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.gallery-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.left-arrow {
+    left: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.right-arrow {
+    right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+/* --- DODANO: NOWE STYLE DLA QUIZU I WIADOMOŚCI KOŃCOWEJ --- */
+
+#quiz-container {
+    width: 100%;
+    height: 100%;
+    display: none; /* Domyślnie ukryty */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Odstęp między pytaniem, opcjami i feedbackiem */
+    padding: 20px;
+    text-align: center;
+}
+
+#quiz-question {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.5em, 4vh, 2.2em);
+    color: #333;
+}
+
+#quiz-options-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Jedna kolumna na telefonach */
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Dwie kolumny na większych ekranach */
+@media (min-width: 600px) {
+    #quiz-options-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.quiz-option-btn {
+    padding: 15px 20px;
+    font-size: clamp(1em, 2.5vh, 1.1em);
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+.quiz-option-btn strong {
+    margin-right: 8px;
+}
+
+.quiz-option-btn:hover {
+    background-color: #d83c5a;
+    transform: translateY(-3px);
+}
+
+#quiz-feedback {
+    font-size: clamp(1.1em, 2.5vh, 1.2em);
+    color: #d83c5a;
+    font-weight: 600;
+    min-height: 30px; /* Rezerwuje miejsce, aby uniknąć przeskakiwania layoutu */
+}
+
+#other-surprise {
+    display: flex;
+    flex-direction: column; /* Umożliwia ułożenie h2 nad p */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+#other-surprise h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5em, 8vh, 4em);
+    color: #d83c5a;
+    margin: 0;
+    text-align: center;
+}
+
+#other-surprise p {
+    font-size: clamp(1.2em, 3vh, 1.8em);
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    margin: 15px 0 0 0;
+}
